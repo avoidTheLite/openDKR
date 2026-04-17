@@ -1,0 +1,22 @@
+{
+  "run_id": "tc-cross-domain-handoff",
+  "timestamp": "2026-04-17T00:00:00Z",
+  "repo_sha": "test-case",
+  "runner": "test-runner",
+  "model": "test-model",
+  "executions": [
+    {
+      "domain_id": "devx",
+      "route_id": "flow-cross-domain-handoff",
+      "selected_target": "domains/_template/interfaces/OUTBOUND.md",
+      "adjudication_used": false,
+      "confidence_score": 0.88,
+      "latency_ms": 180,
+      "context_files": [
+        "domains/_template/interfaces/INBOUND.md",
+        "domains/_template/interfaces/OUTBOUND.md",
+        "domains/_shared/ROUTING_CONVENTIONS.md"
+      ]
+    }
+  ]
+}

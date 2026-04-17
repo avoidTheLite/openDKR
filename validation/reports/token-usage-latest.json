@@ -1,0 +1,49 @@
+{
+  "run": {
+    "run_id": "example-routing-run",
+    "timestamp": "2026-04-16T00:00:00Z",
+    "repo_sha": "example-sha",
+    "runner": "example-runner",
+    "model": "optional-model",
+    "token_source": "mixed"
+  },
+  "summary": {
+    "route_token_totals": {
+      "route-example": 320
+    },
+    "route_token_p95": {
+      "route-example": 320
+    },
+    "top_context_files_by_tokens": [],
+    "flow_count": 1,
+    "flow_token_total": 320
+  },
+  "route_executions": [
+    {
+      "domain_id": "example-domain",
+      "route_id": "route-example",
+      "selected_target": "domains/example-domain/knowledge/PRODUCT_CONTEXT.md",
+      "adjudication_used": false,
+      "confidence_score": 0.87,
+      "latency_ms": 120,
+      "prompt_tokens": 240,
+      "completion_tokens": 80,
+      "total_tokens": 320,
+      "token_source": "provider_reported"
+    }
+  ],
+  "flow_token_summary": [
+    {
+      "flow_id": "route-example",
+      "domain_id": "example-domain",
+      "route_id": "route-example",
+      "selected_target": "domains/example-domain/knowledge/PRODUCT_CONTEXT.md",
+      "adjudication_used": false,
+      "token_source": "provider_reported",
+      "total_tokens": 320
+    }
+  ],
+  "file_token_breakdown": [],
+  "budget_violations": [],
+  "split_recommendations": []
+}

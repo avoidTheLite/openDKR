@@ -1,0 +1,22 @@
+{
+  "run_id": "tc-adjudication-fallback",
+  "timestamp": "2026-04-17T00:00:00Z",
+  "repo_sha": "test-case",
+  "runner": "test-runner",
+  "model": "test-model",
+  "executions": [
+    {
+      "domain_id": "devx",
+      "route_id": "flow-ambiguous-intent",
+      "selected_target": "domains/_template/routing/ADJUDICATION.md",
+      "adjudication_used": true,
+      "confidence_score": 0.54,
+      "latency_ms": 260,
+      "context_files": [
+        "domains/_template/routing/ROUTES.md",
+        "domains/_template/routing/ADJUDICATION.md",
+        "domains/_template/log/ROUTING_DECISIONS.md"
+      ]
+    }
+  ]
+}

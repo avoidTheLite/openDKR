@@ -1,0 +1,21 @@
+{
+  "run": {
+    "run_id": "tc-adjudication-fallback",
+    "timestamp": "2026-04-17T00:00:00Z",
+    "repo_sha": "test-case",
+    "runner": "test-runner",
+    "model": "test-model",
+    "token_source": "mixed"
+  },
+  "flow_token_summary": [
+    {
+      "flow_id": "flow-ambiguous-intent",
+      "domain_id": "devx",
+      "route_id": "flow-ambiguous-intent",
+      "selected_target": "domains/_template/routing/ADJUDICATION.md",
+      "adjudication_used": true,
+      "token_source": "estimated",
+      "total_tokens": 432
+    }
+  ]
+}

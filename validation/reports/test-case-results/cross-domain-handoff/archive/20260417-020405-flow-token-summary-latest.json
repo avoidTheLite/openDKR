@@ -1,0 +1,21 @@
+{
+  "run": {
+    "run_id": "tc-cross-domain-handoff",
+    "timestamp": "2026-04-17T00:00:00Z",
+    "repo_sha": "test-case",
+    "runner": "test-runner",
+    "model": "test-model",
+    "token_source": "mixed"
+  },
+  "flow_token_summary": [
+    {
+      "flow_id": "flow-cross-domain-handoff",
+      "domain_id": "devx",
+      "route_id": "flow-cross-domain-handoff",
+      "selected_target": "domains/_template/interfaces/OUTBOUND.md",
+      "adjudication_used": false,
+      "token_source": "estimated",
+      "total_tokens": 321
+    }
+  ]
+}

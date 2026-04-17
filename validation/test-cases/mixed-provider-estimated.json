@@ -1,0 +1,35 @@
+{
+  "run_id": "tc-mixed-provider-estimated",
+  "timestamp": "2026-04-17T00:00:00Z",
+  "repo_sha": "test-case",
+  "runner": "test-runner",
+  "model": "test-model",
+  "executions": [
+    {
+      "domain_id": "devx",
+      "route_id": "flow-provider-counted",
+      "selected_target": "domains/_template/knowledge/PRODUCT_CONTEXT.md",
+      "adjudication_used": false,
+      "confidence_score": 0.91,
+      "latency_ms": 130,
+      "prompt_tokens": 350,
+      "completion_tokens": 90,
+      "context_files": [
+        "domains/_template/knowledge/PRODUCT_CONTEXT.md",
+        "domains/_template/domain/DOMAIN_MODEL.md"
+      ]
+    },
+    {
+      "domain_id": "devx",
+      "route_id": "flow-estimated-counted",
+      "selected_target": "domains/_template/domain/USE_CASES.md",
+      "adjudication_used": false,
+      "confidence_score": 0.89,
+      "latency_ms": 140,
+      "context_files": [
+        "domains/_template/domain/USE_CASES.md",
+        "domains/_template/domain/BOUNDARIES.md"
+      ]
+    }
+  ]
+}

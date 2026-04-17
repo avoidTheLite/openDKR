@@ -1,0 +1,21 @@
+{
+  "run_id": "tc-happy-path-internal",
+  "timestamp": "2026-04-17T00:00:00Z",
+  "repo_sha": "test-case",
+  "runner": "test-runner",
+  "model": "test-model",
+  "executions": [
+    {
+      "domain_id": "devx",
+      "route_id": "flow-known-issue-answer",
+      "selected_target": "domains/_template/knowledge/WORKAROUNDS.md",
+      "adjudication_used": false,
+      "confidence_score": 0.92,
+      "latency_ms": 120,
+      "context_files": [
+        "domains/_template/knowledge/KNOWN_ISSUES.md",
+        "domains/_template/knowledge/WORKAROUNDS.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "run": {
+    "run_id": "tc-happy-path-internal",
+    "timestamp": "2026-04-17T00:00:00Z",
+    "repo_sha": "test-case",
+    "runner": "test-runner",
+    "model": "test-model",
+    "token_source": "mixed"
+  },
+  "summary": {
+    "route_token_totals": {
+      "flow-known-issue-answer": 47
+    },
+    "route_token_p95": {
+      "flow-known-issue-answer": 47
+    },
+    "top_context_files_by_tokens": [
+      {
+        "file_path": "domains/_template/knowledge/KNOWN_ISSUES.md",
+        "file_type": "markdown",
+        "raw_char_count": 94,
+        "estimated_tokens": 24,
+        "included_by": "route_required_context",
+        "percent_of_route_context": 0.5106,
+        "route_id": "flow-known-issue-answer",
+        "domain_id": "devx"
+      },
+      {
+        "file_path": "domains/_template/knowledge/WORKAROUNDS.md",
+        "file_type": "markdown",
+        "raw_char_count": 90,
+        "estimated_tokens": 23,
+        "included_by": "route_required_context",
+        "percent_of_route_context": 0.4894,
+        "route_id": "flow-known-issue-answer",
+        "domain_id": "devx"
+      }
+    ],
+    "flow_count": 1,
+    "flow_token_total": 47
+  },
+  "route_executions": [
+    {
+      "domain_id": "devx",
+      "route_id": "flow-known-issue-answer",
+      "selected_target": "domains/_template/knowledge/WORKAROUNDS.md",
+      "adjudication_used": false,
+      "confidence_score": 0.92,
+      "latency_ms": 120,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": 47,
+      "token_source": "estimated"
+    }
+  ],
+  "flow_token_summary": [
+    {
+      "flow_id": "flow-known-issue-answer",
+      "domain_id": "devx",
+      "route_id": "flow-known-issue-answer",
+      "selected_target": "domains/_template/knowledge/WORKAROUNDS.md",
+      "adjudication_used": false,
+      "token_source": "estimated",
+      "total_tokens": 47
+    }
+  ],
+  "file_token_breakdown": [
+    {
+      "file_path": "domains/_template/knowledge/KNOWN_ISSUES.md",
+      "file_type": "markdown",
+      "raw_char_count": 94,
+      "estimated_tokens": 24,
+      "included_by": "route_required_context",
+      "percent_of_route_context": 0.5106,
+      "route_id": "flow-known-issue-answer",
+      "domain_id": "devx"
+    },
+    {
+      "file_path": "domains/_template/knowledge/WORKAROUNDS.md",
+      "file_type": "markdown",
+      "raw_char_count": 90,
+      "estimated_tokens": 23,
+      "included_by": "route_required_context",
+      "percent_of_route_context": 0.4894,
+      "route_id": "flow-known-issue-answer",
+      "domain_id": "devx"
+    }
+  ],
+  "budget_violations": [
+    {
+      "severity": "warning",
+      "type": "single_file_share_warn",
+      "route_id": "flow-known-issue-answer",
+      "file_path": "domains/_template/knowledge/KNOWN_ISSUES.md",
+      "value": 0.5106
+    },
+    {
+      "severity": "warning",
+      "type": "single_file_share_warn",
+      "route_id": "flow-known-issue-answer",
+      "file_path": "domains/_template/knowledge/WORKAROUNDS.md",
+      "value": 0.4894
+    }
+  ],
+  "split_recommendations": [
+    {
+      "route_id": "flow-known-issue-answer",
+      "file_path": "domains/_template/knowledge/KNOWN_ISSUES.md",
+      "reason": "single_file_context_share_high",
+      "recommendation": "Split or summarize this markdown file and narrow required_context."
+    },
+    {
+      "route_id": "flow-known-issue-answer",
+      "file_path": "domains/_template/knowledge/WORKAROUNDS.md",
+      "reason": "single_file_context_share_high",
+      "recommendation": "Split or summarize this markdown file and narrow required_context."
+    }
+  ]
+}

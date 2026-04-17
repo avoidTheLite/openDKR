@@ -1,0 +1,21 @@
+{
+  "run": {
+    "run_id": "example-routing-run",
+    "timestamp": "2026-04-16T00:00:00Z",
+    "repo_sha": "example-sha",
+    "runner": "example-runner",
+    "model": "optional-model",
+    "token_source": "mixed"
+  },
+  "flow_token_summary": [
+    {
+      "flow_id": "route-example",
+      "domain_id": "example-domain",
+      "route_id": "route-example",
+      "selected_target": "domains/example-domain/knowledge/PRODUCT_CONTEXT.md",
+      "adjudication_used": false,
+      "token_source": "provider_reported",
+      "total_tokens": 320
+    }
+  ]
+}

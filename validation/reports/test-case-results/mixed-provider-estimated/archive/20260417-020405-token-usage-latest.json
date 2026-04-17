@@ -1,0 +1,208 @@
+{
+  "run": {
+    "run_id": "tc-mixed-provider-estimated",
+    "timestamp": "2026-04-17T00:00:00Z",
+    "repo_sha": "test-case",
+    "runner": "test-runner",
+    "model": "test-model",
+    "token_source": "mixed"
+  },
+  "summary": {
+    "route_token_totals": {
+      "flow-provider-counted": 440,
+      "flow-estimated-counted": 56
+    },
+    "route_token_p95": {
+      "flow-provider-counted": 440,
+      "flow-estimated-counted": 56
+    },
+    "top_context_files_by_tokens": [
+      {
+        "file_path": "domains/_template/knowledge/PRODUCT_CONTEXT.md",
+        "file_type": "markdown",
+        "raw_char_count": 116,
+        "estimated_tokens": 29,
+        "included_by": "route_required_context",
+        "percent_of_route_context": 0.5472,
+        "route_id": "flow-provider-counted",
+        "domain_id": "devx"
+      },
+      {
+        "file_path": "domains/_template/domain/BOUNDARIES.md",
+        "file_type": "markdown",
+        "raw_char_count": 114,
+        "estimated_tokens": 29,
+        "included_by": "route_required_context",
+        "percent_of_route_context": 0.5179,
+        "route_id": "flow-estimated-counted",
+        "domain_id": "devx"
+      },
+      {
+        "file_path": "domains/_template/domain/USE_CASES.md",
+        "file_type": "markdown",
+        "raw_char_count": 108,
+        "estimated_tokens": 27,
+        "included_by": "route_required_context",
+        "percent_of_route_context": 0.4821,
+        "route_id": "flow-estimated-counted",
+        "domain_id": "devx"
+      },
+      {
+        "file_path": "domains/_template/domain/DOMAIN_MODEL.md",
+        "file_type": "markdown",
+        "raw_char_count": 95,
+        "estimated_tokens": 24,
+        "included_by": "route_required_context",
+        "percent_of_route_context": 0.4528,
+        "route_id": "flow-provider-counted",
+        "domain_id": "devx"
+      }
+    ],
+    "flow_count": 2,
+    "flow_token_total": 496
+  },
+  "route_executions": [
+    {
+      "domain_id": "devx",
+      "route_id": "flow-provider-counted",
+      "selected_target": "domains/_template/knowledge/PRODUCT_CONTEXT.md",
+      "adjudication_used": false,
+      "confidence_score": 0.91,
+      "latency_ms": 130,
+      "prompt_tokens": 350,
+      "completion_tokens": 90,
+      "total_tokens": 440,
+      "token_source": "provider_reported"
+    },
+    {
+      "domain_id": "devx",
+      "route_id": "flow-estimated-counted",
+      "selected_target": "domains/_template/domain/USE_CASES.md",
+      "adjudication_used": false,
+      "confidence_score": 0.89,
+      "latency_ms": 140,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": 56,
+      "token_source": "estimated"
+    }
+  ],
+  "flow_token_summary": [
+    {
+      "flow_id": "flow-provider-counted",
+      "domain_id": "devx",
+      "route_id": "flow-provider-counted",
+      "selected_target": "domains/_template/knowledge/PRODUCT_CONTEXT.md",
+      "adjudication_used": false,
+      "token_source": "provider_reported",
+      "total_tokens": 440
+    },
+    {
+      "flow_id": "flow-estimated-counted",
+      "domain_id": "devx",
+      "route_id": "flow-estimated-counted",
+      "selected_target": "domains/_template/domain/USE_CASES.md",
+      "adjudication_used": false,
+      "token_source": "estimated",
+      "total_tokens": 56
+    }
+  ],
+  "file_token_breakdown": [
+    {
+      "file_path": "domains/_template/knowledge/PRODUCT_CONTEXT.md",
+      "file_type": "markdown",
+      "raw_char_count": 116,
+      "estimated_tokens": 29,
+      "included_by": "route_required_context",
+      "percent_of_route_context": 0.5472,
+      "route_id": "flow-provider-counted",
+      "domain_id": "devx"
+    },
+    {
+      "file_path": "domains/_template/domain/DOMAIN_MODEL.md",
+      "file_type": "markdown",
+      "raw_char_count": 95,
+      "estimated_tokens": 24,
+      "included_by": "route_required_context",
+      "percent_of_route_context": 0.4528,
+      "route_id": "flow-provider-counted",
+      "domain_id": "devx"
+    },
+    {
+      "file_path": "domains/_template/domain/USE_CASES.md",
+      "file_type": "markdown",
+      "raw_char_count": 108,
+      "estimated_tokens": 27,
+      "included_by": "route_required_context",
+      "percent_of_route_context": 0.4821,
+      "route_id": "flow-estimated-counted",
+      "domain_id": "devx"
+    },
+    {
+      "file_path": "domains/_template/domain/BOUNDARIES.md",
+      "file_type": "markdown",
+      "raw_char_count": 114,
+      "estimated_tokens": 29,
+      "included_by": "route_required_context",
+      "percent_of_route_context": 0.5179,
+      "route_id": "flow-estimated-counted",
+      "domain_id": "devx"
+    }
+  ],
+  "budget_violations": [
+    {
+      "severity": "warning",
+      "type": "single_file_share_warn",
+      "route_id": "flow-provider-counted",
+      "file_path": "domains/_template/knowledge/PRODUCT_CONTEXT.md",
+      "value": 0.5472
+    },
+    {
+      "severity": "warning",
+      "type": "single_file_share_warn",
+      "route_id": "flow-provider-counted",
+      "file_path": "domains/_template/domain/DOMAIN_MODEL.md",
+      "value": 0.4528
+    },
+    {
+      "severity": "warning",
+      "type": "single_file_share_warn",
+      "route_id": "flow-estimated-counted",
+      "file_path": "domains/_template/domain/USE_CASES.md",
+      "value": 0.4821
+    },
+    {
+      "severity": "warning",
+      "type": "single_file_share_warn",
+      "route_id": "flow-estimated-counted",
+      "file_path": "domains/_template/domain/BOUNDARIES.md",
+      "value": 0.5179
+    }
+  ],
+  "split_recommendations": [
+    {
+      "route_id": "flow-provider-counted",
+      "file_path": "domains/_template/knowledge/PRODUCT_CONTEXT.md",
+      "reason": "single_file_context_share_high",
+      "recommendation": "Split or summarize this markdown file and narrow required_context."
+    },
+    {
+      "route_id": "flow-estimated-counted",
+      "file_path": "domains/_template/domain/BOUNDARIES.md",
+      "reason": "single_file_context_share_high",
+      "recommendation": "Split or summarize this markdown file and narrow required_context."
+    },
+    {
+      "route_id": "flow-estimated-counted",
+      "file_path": "domains/_template/domain/USE_CASES.md",
+      "reason": "single_file_context_share_high",
+      "recommendation": "Split or summarize this markdown file and narrow required_context."
+    },
+    {
+      "route_id": "flow-provider-counted",
+      "file_path": "domains/_template/domain/DOMAIN_MODEL.md",
+      "reason": "single_file_context_share_high",
+      "recommendation": "Split or summarize this markdown file and narrow required_context."
+    }
+  ]
+}
