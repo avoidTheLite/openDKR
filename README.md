@@ -11,12 +11,13 @@ This repository now includes a runner-agnostic template pack for documentation-a
 ## Navigation
 
 1. Start with `AGENTS.md`.
-2. Read `/domains/_shared/ROUTING_CONVENTIONS.md`.
+2. Read `/domains/_shared/ROUTING_CONVENTIONS.md` and `/domains/_shared/NAMING_CONVENTIONS.md`.
 3. Copy `/domains/_template` to create a real domain folder.
 4. Implement deterministic and fallback routing in:
    - `/domains/<domain-id>/routing/ROUTES.md`
    - `/domains/<domain-id>/routing/ADJUDICATION.md`
-5. Use `/validation` for CI checks, duplication detection, and coverage reporting.
+5. Use root function-first routing docs in `/routing/` for repo-level orchestration.
+6. Use `/validation` for CI checks, duplication detection, and coverage reporting.
 
 ## Routing File Charters
 

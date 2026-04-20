@@ -6,6 +6,7 @@
 - Keep lists concise and machine-parsable when possible.
 - Prefer stable IDs over implicit references.
 - Use absolute repo paths when referencing files in contracts.
+- Use function-first file naming from `/domains/_shared/NAMING_CONVENTIONS.md`.
 
 ## Authoring Rules
 
@@ -13,3 +14,4 @@
 - Avoid duplicating canonical definitions across domains.
 - Link cross-domain terms back to `_shared/GLOSSARY.md`.
 - Update decision logs when adjudication behavior changes.
+- Keep codename suffixes after `--` optional and non-functional.

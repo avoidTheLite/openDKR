@@ -13,6 +13,7 @@ Validation focuses on:
 - routing coverage and unresolved intent visibility
 - token observability, per-route budgets, and markdown file token contribution
 - AI routing analysis policy and runbooks under `validation/routing/`
+- function-first naming compliance for routing and validation markdown artifacts
 
 ## Token Metrics Pipeline
 
@@ -22,3 +23,5 @@ Validation focuses on:
 - Collector script: `tools/collect_token_metrics.py`
 - Compact flow token summary: `validation/reports/flow-token-summary-latest.json`
 - Routing analysis policies: `validation/routing/`
+- Blocking policy: `validation/policy.decision.blocking--BananaSplitPolicy.md`
+- Confidence gate: `validation/validator.confidence.gate--JeanKong.md`

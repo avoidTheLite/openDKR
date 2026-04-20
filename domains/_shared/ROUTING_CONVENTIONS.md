@@ -13,6 +13,13 @@ Every route entry should include:
 - `required_context`
 - `on_miss`
 
+## Naming Contract
+
+- Function-first names are required for repo-level routing and validation artifacts.
+- Parsers must evaluate only the filename stem before `--`.
+- Codename suffixes are optional aliases and never influence routing behavior.
+- Canonical naming rules live in `/domains/_shared/NAMING_CONVENTIONS.md`.
+
 ## Standard Adjudication Fields
 
 Every adjudication outcome should include:

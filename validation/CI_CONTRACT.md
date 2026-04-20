@@ -23,6 +23,9 @@ CI should emit structured results for documentation routing quality.
 - token_report_history_path
 - flow_token_summary
 - flow_token_summary_latest_path
+- function_first_naming_violations
+- codename_only_naming_violations
+- naming_validation_report_path
 
 ## Route Decision Trace Requirements
 
@@ -34,6 +37,7 @@ Each routed execution should be traceable with:
 - confidence_score
 - fallback_used
 - evidence_refs
+- naming_contract_version
 
 ## Token Reporting Contract
 
