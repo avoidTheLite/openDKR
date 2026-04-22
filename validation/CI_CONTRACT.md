@@ -12,6 +12,7 @@ CI should emit structured results for documentation routing quality.
 - unresolved_external_links
 - reference_link_update_violations
 - uncovered_routes
+- routing_sync_violations
 - report_location
 - route_token_totals
 - route_token_p95
@@ -26,6 +27,18 @@ CI should emit structured results for documentation routing quality.
 - function_first_naming_violations
 - codename_only_naming_violations
 - naming_validation_report_path
+
+## Routing Sync Violation Shape
+
+Each entry in `routing_sync_violations` should include:
+
+- route_id
+- domain_id
+- severity
+- violation_type
+- stale_field
+- expected_value
+- actual_value
 
 ## Route Decision Trace Requirements
 

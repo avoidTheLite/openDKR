@@ -1,0 +1,30 @@
+{
+  "run": {
+    "run_id": "tc-mixed-provider-estimated",
+    "timestamp": "2026-04-17T00:00:00Z",
+    "repo_sha": "test-case",
+    "runner": "test-runner",
+    "model": "test-model",
+    "token_source": "mixed"
+  },
+  "flow_token_summary": [
+    {
+      "flow_id": "flow-provider-counted",
+      "domain_id": "devx",
+      "route_id": "flow-provider-counted",
+      "selected_target": "domains/_template/knowledge/PRODUCT_CONTEXT.md",
+      "adjudication_used": false,
+      "token_source": "provider_reported",
+      "total_tokens": 440
+    },
+    {
+      "flow_id": "flow-estimated-counted",
+      "domain_id": "devx",
+      "route_id": "flow-estimated-counted",
+      "selected_target": "domains/_template/domain/USE_CASES.md",
+      "adjudication_used": false,
+      "token_source": "estimated",
+      "total_tokens": 56
+    }
+  ]
+}

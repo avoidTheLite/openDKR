@@ -42,6 +42,7 @@ Each markdown context file should include:
 - `route_token_p95`: p95 token count per route id.
 - `top_context_files_by_tokens`: highest token files across the run.
 - `budget_violations`: policy violations from `TOKEN_BUDGETS.md`.
+- `routing_sync_violations`: stale routing findings such as missing required context, missing cross-domain targets, stale intent terms, or confidence floor drift.
 - `split_recommendations`: route/file split suggestions generated from thresholds.
 - `flow_token_summary`: compact end-to-end flow rows for quick token review.
 

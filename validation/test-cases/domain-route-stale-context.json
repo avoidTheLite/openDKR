@@ -1,0 +1,35 @@
+{
+  "run_id": "tc-domain-route-stale-context",
+  "timestamp": "2026-04-20T00:00:00Z",
+  "repo_sha": "test-case",
+  "runner": "test-runner",
+  "model": "test-model",
+  "assertions": {
+    "flow_count": 1,
+    "adjudication_used": [false],
+    "routing_sync_violation_types": [
+      "required_context_integrity"
+    ],
+    "routing_sync_violation_severities": [
+      "blocking"
+    ]
+  },
+  "executions": [
+    {
+      "domain_id": "devx",
+      "route_id": "flow-stale-required-context",
+      "selected_target": "domains/_template/knowledge/WORKAROUNDS.md",
+      "target_type": "domain_doc",
+      "target_ref": "domains/_template/knowledge/WORKAROUNDS.md",
+      "adjudication_used": false,
+      "confidence_floor": 0.85,
+      "confidence_score": 0.87,
+      "latency_ms": 110,
+      "allowed_confidence_floors": [0.6, 0.85],
+      "context_files": [
+        "domains/_template/knowledge/KNOWN_ISSUES.md",
+        "domains/_template/knowledge/REMOVED_CONTEXT.md"
+      ]
+    }
+  ]
+}

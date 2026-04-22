@@ -4,6 +4,15 @@
   "repo_sha": "test-case",
   "runner": "test-runner",
   "model": "test-model",
+  "assertions": {
+    "flow_count": 2,
+    "adjudication_used": [false, false],
+    "routing_sync_violation_types": [],
+    "token_sources": [
+      "provider_reported",
+      "estimated"
+    ]
+  },
   "executions": [
     {
       "domain_id": "devx",

@@ -1,0 +1,21 @@
+{
+  "run": {
+    "run_id": "tc-confidence-floor-misaligned",
+    "timestamp": "2026-04-20T00:00:00Z",
+    "repo_sha": "test-case",
+    "runner": "test-runner",
+    "model": "test-model",
+    "token_source": "mixed"
+  },
+  "flow_token_summary": [
+    {
+      "flow_id": "flow-confidence-floor-misaligned",
+      "domain_id": "devx",
+      "route_id": "flow-confidence-floor-misaligned",
+      "selected_target": "domains/_template/routing/ROUTES.md",
+      "adjudication_used": false,
+      "token_source": "estimated",
+      "total_tokens": 379
+    }
+  ]
+}

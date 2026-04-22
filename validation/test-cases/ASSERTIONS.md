@@ -26,3 +26,23 @@
 
 - exactly 2 flow rows
 - one flow with provider tokens and one estimated flow
+
+## domain-route-stale-context
+
+- exactly 1 flow in `flow_token_summary`
+- `routing_sync_violations` includes a blocking `required_context_integrity` violation
+
+## domain-entity-renamed
+
+- exactly 1 flow in `flow_token_summary`
+- `routing_sync_violations` includes a warning `intent_pattern_entity_alignment` violation
+
+## cross-domain-target-missing
+
+- exactly 1 flow in `flow_token_summary`
+- `routing_sync_violations` includes a blocking `cross_domain_target_existence` violation
+
+## confidence-floor-misaligned
+
+- exactly 1 flow in `flow_token_summary`
+- `routing_sync_violations` includes a warning `confidence_floor_band_alignment` violation

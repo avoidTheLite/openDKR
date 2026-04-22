@@ -8,3 +8,5 @@ Track route readiness by domain and intent.
 - adjudication_only_routes
 - uncovered_intents
 - unresolved_first_occurrences
+- stale_routes
+- last_domain_sync

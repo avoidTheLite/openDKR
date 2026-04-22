@@ -1,0 +1,133 @@
+{
+  "run": {
+    "run_id": "tc-confidence-floor-misaligned",
+    "timestamp": "2026-04-20T00:00:00Z",
+    "repo_sha": "test-case",
+    "runner": "test-runner",
+    "model": "test-model",
+    "token_source": "mixed"
+  },
+  "summary": {
+    "route_token_totals": {
+      "flow-confidence-floor-misaligned": 379
+    },
+    "route_token_p95": {
+      "flow-confidence-floor-misaligned": 379
+    },
+    "top_context_files_by_tokens": [
+      {
+        "file_path": "domains/_template/routing/ROUTES.md",
+        "file_type": "markdown",
+        "raw_char_count": 831,
+        "estimated_tokens": 208,
+        "included_by": "route_required_context",
+        "percent_of_route_context": 0.5488,
+        "route_id": "flow-confidence-floor-misaligned",
+        "domain_id": "devx"
+      },
+      {
+        "file_path": "domains/_template/routing/ADJUDICATION.md",
+        "file_type": "markdown",
+        "raw_char_count": 681,
+        "estimated_tokens": 171,
+        "included_by": "route_required_context",
+        "percent_of_route_context": 0.4512,
+        "route_id": "flow-confidence-floor-misaligned",
+        "domain_id": "devx"
+      }
+    ],
+    "flow_count": 1,
+    "flow_token_total": 379
+  },
+  "route_executions": [
+    {
+      "domain_id": "devx",
+      "route_id": "flow-confidence-floor-misaligned",
+      "selected_target": "domains/_template/routing/ROUTES.md",
+      "adjudication_used": false,
+      "confidence_score": 0.82,
+      "latency_ms": 90,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": 379,
+      "token_source": "estimated"
+    }
+  ],
+  "flow_token_summary": [
+    {
+      "flow_id": "flow-confidence-floor-misaligned",
+      "domain_id": "devx",
+      "route_id": "flow-confidence-floor-misaligned",
+      "selected_target": "domains/_template/routing/ROUTES.md",
+      "adjudication_used": false,
+      "token_source": "estimated",
+      "total_tokens": 379
+    }
+  ],
+  "file_token_breakdown": [
+    {
+      "file_path": "domains/_template/routing/ADJUDICATION.md",
+      "file_type": "markdown",
+      "raw_char_count": 681,
+      "estimated_tokens": 171,
+      "included_by": "route_required_context",
+      "percent_of_route_context": 0.4512,
+      "route_id": "flow-confidence-floor-misaligned",
+      "domain_id": "devx"
+    },
+    {
+      "file_path": "domains/_template/routing/ROUTES.md",
+      "file_type": "markdown",
+      "raw_char_count": 831,
+      "estimated_tokens": 208,
+      "included_by": "route_required_context",
+      "percent_of_route_context": 0.5488,
+      "route_id": "flow-confidence-floor-misaligned",
+      "domain_id": "devx"
+    }
+  ],
+  "budget_violations": [
+    {
+      "severity": "warning",
+      "type": "single_file_share_warn",
+      "route_id": "flow-confidence-floor-misaligned",
+      "file_path": "domains/_template/routing/ADJUDICATION.md",
+      "value": 0.4512
+    },
+    {
+      "severity": "warning",
+      "type": "single_file_share_warn",
+      "route_id": "flow-confidence-floor-misaligned",
+      "file_path": "domains/_template/routing/ROUTES.md",
+      "value": 0.5488
+    }
+  ],
+  "routing_sync_violations": [
+    {
+      "route_id": "flow-confidence-floor-misaligned",
+      "domain_id": "devx",
+      "severity": "warning",
+      "violation_type": "confidence_floor_band_alignment",
+      "stale_field": "confidence_floor",
+      "expected_value": [
+        0.6,
+        0.85
+      ],
+      "actual_value": 0.72
+    }
+  ],
+  "split_recommendations": [
+    {
+      "route_id": "flow-confidence-floor-misaligned",
+      "file_path": "domains/_template/routing/ROUTES.md",
+      "reason": "single_file_context_share_high",
+      "recommendation": "Split or summarize this markdown file and narrow required_context."
+    },
+    {
+      "route_id": "flow-confidence-floor-misaligned",
+      "file_path": "domains/_template/routing/ADJUDICATION.md",
+      "reason": "single_file_context_share_high",
+      "recommendation": "Split or summarize this markdown file and narrow required_context."
+    }
+  ]
+}

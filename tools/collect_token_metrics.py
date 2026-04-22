@@ -14,11 +14,30 @@ Input trace format (JSON):
       "domain_id": "...",
       "route_id": "...",
       "selected_target": "...",
+            "target_type": "domain_doc",
+            "target_ref": "domains/example/knowledge/WORKAROUNDS.md",
       "adjudication_used": false,
+            "confidence_floor": 0.85,
       "confidence_score": 0.9,
       "latency_ms": 123,
       "prompt_tokens": 100,          # optional
       "completion_tokens": 20,       # optional
+            "intent_pattern_terms": [      # optional routing-sync validation inputs
+                "known",
+                "issue"
+            ],
+            "known_domain_terms": [
+                "known",
+                "issue",
+                "workaround"
+            ],
+            "registered_targets": [
+                "domains/support/interfaces/OUTBOUND.md"
+            ],
+            "allowed_confidence_floors": [
+                0.6,
+                0.85
+            ],
       "context_files": [
         "domains/example/knowledge/PRODUCT_CONTEXT.md"
       ]
@@ -69,6 +88,163 @@ def p95(values: list[int]) -> int:
     return int(quantiles(values, n=100, method="inclusive")[94])
 
 
+def evaluate_routing_sync(repo_root: Path, exec_row: dict[str, Any]) -> list[dict[str, Any]]:
+    violations: list[dict[str, Any]] = []
+    route_id = exec_row.get("route_id", "unknown-route")
+    domain_id = exec_row.get("domain_id")
+
+    for rel_path in exec_row.get("context_files", []):
+        if not isinstance(rel_path, str):
+            continue
+        if not Path(rel_path).suffix.lower() == ".md":
+            continue
+        if not (repo_root / rel_path).exists():
+            violations.append(
+                {
+                    "route_id": route_id,
+                    "domain_id": domain_id,
+                    "severity": "blocking",
+                    "violation_type": "required_context_integrity",
+                    "stale_field": "required_context",
+                    "expected_value": "existing markdown file",
+                    "actual_value": rel_path,
+                }
+            )
+
+    intent_terms = [term for term in exec_row.get("intent_pattern_terms", []) if isinstance(term, str)]
+    known_terms = {term for term in exec_row.get("known_domain_terms", []) if isinstance(term, str)}
+    stale_terms = [term for term in intent_terms if term not in known_terms]
+    if intent_terms and known_terms and stale_terms:
+        violations.append(
+            {
+                "route_id": route_id,
+                "domain_id": domain_id,
+                "severity": "warning",
+                "violation_type": "intent_pattern_entity_alignment",
+                "stale_field": "intent_pattern",
+                "expected_value": sorted(known_terms),
+                "actual_value": stale_terms,
+            }
+        )
+
+    target_type = exec_row.get("target_type")
+    if target_type == "cross_domain":
+        registered_targets = [target for target in exec_row.get("registered_targets", []) if isinstance(target, str)]
+        target_ref = exec_row.get("target_ref") or exec_row.get("selected_target")
+        if registered_targets and isinstance(target_ref, str) and target_ref not in registered_targets:
+            violations.append(
+                {
+                    "route_id": route_id,
+                    "domain_id": domain_id,
+                    "severity": "blocking",
+                    "violation_type": "cross_domain_target_existence",
+                    "stale_field": "target_ref",
+                    "expected_value": registered_targets,
+                    "actual_value": target_ref,
+                }
+            )
+
+    confidence_floor = exec_row.get("confidence_floor")
+    allowed_floors = [floor for floor in exec_row.get("allowed_confidence_floors", []) if isinstance(floor, (int, float))]
+    if isinstance(confidence_floor, (int, float)) and allowed_floors:
+        rounded_floor = round(float(confidence_floor), 2)
+        normalized_allowed = [round(float(floor), 2) for floor in allowed_floors]
+        if rounded_floor not in normalized_allowed:
+            violations.append(
+                {
+                    "route_id": route_id,
+                    "domain_id": domain_id,
+                    "severity": "warning",
+                    "violation_type": "confidence_floor_band_alignment",
+                    "stale_field": "confidence_floor",
+                    "expected_value": normalized_allowed,
+                    "actual_value": rounded_floor,
+                }
+            )
+
+    return violations
+
+
+def validate_assertions(trace: dict[str, Any], report: dict[str, Any]) -> list[str]:
+    assertions = trace.get("assertions", {})
+    if not isinstance(assertions, dict):
+        return ["assertions must be an object when present"]
+
+    failures: list[str] = []
+    flow_rows = report.get("flow_token_summary", [])
+    routing_sync_violations = report.get("routing_sync_violations", [])
+    budget_violations = report.get("budget_violations", [])
+    top_context_files = report.get("summary", {}).get("top_context_files_by_tokens", [])
+
+    if "flow_count" in assertions:
+        expected = assertions.get("flow_count")
+        actual = len(flow_rows)
+        if actual != expected:
+            failures.append(f"flow_count expected {expected}, got {actual}")
+
+    if "adjudication_used" in assertions:
+        expected = assertions.get("adjudication_used")
+        actual = [row.get("adjudication_used") for row in flow_rows]
+        if actual != expected:
+            failures.append(f"adjudication_used expected {expected}, got {actual}")
+
+    if "routing_sync_violation_types" in assertions:
+        expected = sorted(assertions.get("routing_sync_violation_types", []))
+        actual = sorted(
+            violation.get("violation_type")
+            for violation in routing_sync_violations
+            if isinstance(violation.get("violation_type"), str)
+        )
+        if actual != expected:
+            failures.append(f"routing_sync_violation_types expected {expected}, got {actual}")
+
+    if "routing_sync_violation_severities" in assertions:
+        expected = sorted(assertions.get("routing_sync_violation_severities", []))
+        actual = sorted(
+            violation.get("severity")
+            for violation in routing_sync_violations
+            if isinstance(violation.get("severity"), str)
+        )
+        if actual != expected:
+            failures.append(f"routing_sync_violation_severities expected {expected}, got {actual}")
+
+    if "budget_violation_types_contains" in assertions:
+        expected = assertions.get("budget_violation_types_contains", [])
+        actual = {
+            violation.get("type")
+            for violation in budget_violations
+            if isinstance(violation.get("type"), str)
+        }
+        missing = [value for value in expected if value not in actual]
+        if missing:
+            failures.append(f"budget_violation_types_contains missing {missing} from {sorted(actual)}")
+
+    if "top_context_files_contains" in assertions:
+        expected = assertions.get("top_context_files_contains", [])
+        actual = {
+            row.get("file_path")
+            for row in top_context_files
+            if isinstance(row.get("file_path"), str)
+        }
+        missing = [value for value in expected if value not in actual]
+        if missing:
+            failures.append(f"top_context_files_contains missing {missing} from {sorted(actual)}")
+
+    if "token_sources" in assertions:
+        expected = assertions.get("token_sources")
+        actual = [row.get("token_source") for row in flow_rows]
+        if actual != expected:
+            failures.append(f"token_sources expected {expected}, got {actual}")
+
+    if "selected_targets" in assertions:
+        expected = assertions.get("selected_targets")
+        actual = [row.get("selected_target") for row in flow_rows]
+        if actual != expected:
+            failures.append(f"selected_targets expected {expected}, got {actual}")
+
+    return failures
+
+
 def collect_metrics(repo_root: Path, trace: dict[str, Any], budgets: dict[str, float]) -> dict[str, Any]:
     executions = trace.get("executions", [])
     file_rows: list[dict[str, Any]] = []
@@ -77,12 +253,21 @@ def collect_metrics(repo_root: Path, trace: dict[str, Any], budgets: dict[str, f
     route_samples: dict[str, list[int]] = {}
     budget_violations: list[dict[str, Any]] = []
     split_recommendations: list[dict[str, Any]] = []
+    routing_sync_violations: list[dict[str, Any]] = []
 
     for exec_row in executions:
         route_id = exec_row.get("route_id", "unknown-route")
         context_files = exec_row.get("context_files", [])
         context_total = 0
         per_file_rows: list[dict[str, Any]] = []
+
+        for violation in evaluate_routing_sync(repo_root, exec_row):
+            actual_value = violation.get("actual_value")
+            if violation.get("violation_type") == "required_context_integrity" and isinstance(actual_value, str):
+                actual_path = (repo_root / actual_value).resolve()
+                if actual_path.exists():
+                    continue
+            routing_sync_violations.append(violation)
 
         for rel_path in context_files:
             file_path = (repo_root / rel_path).resolve()
@@ -236,6 +421,7 @@ def collect_metrics(repo_root: Path, trace: dict[str, Any], budgets: dict[str, f
         "flow_token_summary": flow_token_summary,
         "file_token_breakdown": file_rows,
         "budget_violations": budget_violations,
+        "routing_sync_violations": routing_sync_violations,
         "split_recommendations": split_recommendations,
     }
 
@@ -288,6 +474,12 @@ def main() -> None:
     trace = load_json(trace_path)
     budgets = parse_budget_markdown(budget_path)
     report = collect_metrics(repo_root, trace, budgets)
+    assertion_failures = validate_assertions(trace, report)
+
+    if assertion_failures:
+        for failure in assertion_failures:
+            print(f"ASSERTION FAILED: {failure}")
+        raise SystemExit(1)
 
     timestamp = dt.datetime.utcnow().strftime("%Y%m%d-%H%M%S")
     latest_output_path.parent.mkdir(parents=True, exist_ok=True)

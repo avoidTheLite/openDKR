@@ -9,19 +9,19 @@
   },
   "summary": {
     "route_token_totals": {
-      "flow-cross-domain-handoff": 321
+      "flow-cross-domain-handoff": 401
     },
     "route_token_p95": {
-      "flow-cross-domain-handoff": 321
+      "flow-cross-domain-handoff": 401
     },
     "top_context_files_by_tokens": [
       {
         "file_path": "domains/_shared/ROUTING_CONVENTIONS.md",
         "file_type": "markdown",
-        "raw_char_count": 873,
-        "estimated_tokens": 219,
+        "raw_char_count": 1193,
+        "estimated_tokens": 299,
         "included_by": "route_required_context",
-        "percent_of_route_context": 0.6822,
+        "percent_of_route_context": 0.7456,
         "route_id": "flow-cross-domain-handoff",
         "domain_id": "devx"
       },
@@ -31,7 +31,7 @@
         "raw_char_count": 226,
         "estimated_tokens": 57,
         "included_by": "route_required_context",
-        "percent_of_route_context": 0.1776,
+        "percent_of_route_context": 0.1421,
         "route_id": "flow-cross-domain-handoff",
         "domain_id": "devx"
       },
@@ -41,13 +41,13 @@
         "raw_char_count": 177,
         "estimated_tokens": 45,
         "included_by": "route_required_context",
-        "percent_of_route_context": 0.1402,
+        "percent_of_route_context": 0.1122,
         "route_id": "flow-cross-domain-handoff",
         "domain_id": "devx"
       }
     ],
     "flow_count": 1,
-    "flow_token_total": 321
+    "flow_token_total": 401
   },
   "route_executions": [
     {
@@ -59,7 +59,7 @@
       "latency_ms": 180,
       "prompt_tokens": null,
       "completion_tokens": null,
-      "total_tokens": 321,
+      "total_tokens": 401,
       "token_source": "estimated"
     }
   ],
@@ -71,7 +71,7 @@
       "selected_target": "domains/_template/interfaces/OUTBOUND.md",
       "adjudication_used": false,
       "token_source": "estimated",
-      "total_tokens": 321
+      "total_tokens": 401
     }
   ],
   "file_token_breakdown": [
@@ -81,7 +81,7 @@
       "raw_char_count": 177,
       "estimated_tokens": 45,
       "included_by": "route_required_context",
-      "percent_of_route_context": 0.1402,
+      "percent_of_route_context": 0.1122,
       "route_id": "flow-cross-domain-handoff",
       "domain_id": "devx"
     },
@@ -91,17 +91,17 @@
       "raw_char_count": 226,
       "estimated_tokens": 57,
       "included_by": "route_required_context",
-      "percent_of_route_context": 0.1776,
+      "percent_of_route_context": 0.1421,
       "route_id": "flow-cross-domain-handoff",
       "domain_id": "devx"
     },
     {
       "file_path": "domains/_shared/ROUTING_CONVENTIONS.md",
       "file_type": "markdown",
-      "raw_char_count": 873,
-      "estimated_tokens": 219,
+      "raw_char_count": 1193,
+      "estimated_tokens": 299,
       "included_by": "route_required_context",
-      "percent_of_route_context": 0.6822,
+      "percent_of_route_context": 0.7456,
       "route_id": "flow-cross-domain-handoff",
       "domain_id": "devx"
     }
@@ -112,9 +112,10 @@
       "type": "single_file_share_block",
       "route_id": "flow-cross-domain-handoff",
       "file_path": "domains/_shared/ROUTING_CONVENTIONS.md",
-      "value": 0.6822
+      "value": 0.7456
     }
   ],
+  "routing_sync_violations": [],
   "split_recommendations": [
     {
       "route_id": "flow-cross-domain-handoff",

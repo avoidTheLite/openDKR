@@ -4,6 +4,14 @@
   "repo_sha": "test-case",
   "runner": "test-runner",
   "model": "test-model",
+  "assertions": {
+    "flow_count": 1,
+    "adjudication_used": [true],
+    "routing_sync_violation_types": [],
+    "selected_targets": [
+      "domains/_template/routing/ADJUDICATION.md"
+    ]
+  },
   "executions": [
     {
       "domain_id": "devx",

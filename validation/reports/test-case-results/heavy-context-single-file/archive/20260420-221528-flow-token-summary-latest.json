@@ -1,0 +1,21 @@
+{
+  "run": {
+    "run_id": "tc-heavy-context-single-file",
+    "timestamp": "2026-04-17T00:00:00Z",
+    "repo_sha": "test-case",
+    "runner": "test-runner",
+    "model": "test-model",
+    "token_source": "mixed"
+  },
+  "flow_token_summary": [
+    {
+      "flow_id": "flow-heavy-doc-context",
+      "domain_id": "devx",
+      "route_id": "flow-heavy-doc-context",
+      "selected_target": "Lore/docs/domain-Kong-(DK)_summary.md",
+      "adjudication_used": false,
+      "token_source": "estimated",
+      "total_tokens": 3786
+    }
+  ]
+}

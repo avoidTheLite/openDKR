@@ -1,0 +1,38 @@
+{
+  "run_id": "tc-cross-domain-target-missing",
+  "timestamp": "2026-04-20T00:00:00Z",
+  "repo_sha": "test-case",
+  "runner": "test-runner",
+  "model": "test-model",
+  "assertions": {
+    "flow_count": 1,
+    "adjudication_used": [false],
+    "routing_sync_violation_types": [
+      "cross_domain_target_existence"
+    ],
+    "routing_sync_violation_severities": [
+      "blocking"
+    ]
+  },
+  "executions": [
+    {
+      "domain_id": "devx",
+      "route_id": "flow-missing-cross-domain-target",
+      "selected_target": "domains/payments/interfaces/OUTBOUND.md",
+      "target_type": "cross_domain",
+      "target_ref": "domains/payments/interfaces/OUTBOUND.md",
+      "registered_targets": [
+        "domains/support/interfaces/OUTBOUND.md",
+        "domains/operations/interfaces/OUTBOUND.md"
+      ],
+      "adjudication_used": false,
+      "confidence_floor": 0.85,
+      "confidence_score": 0.9,
+      "latency_ms": 105,
+      "allowed_confidence_floors": [0.6, 0.85],
+      "context_files": [
+        "domains/_template/interfaces/OUTBOUND.md"
+      ]
+    }
+  ]
+}

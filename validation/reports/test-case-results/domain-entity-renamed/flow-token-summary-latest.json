@@ -1,0 +1,21 @@
+{
+  "run": {
+    "run_id": "tc-domain-entity-renamed",
+    "timestamp": "2026-04-20T00:00:00Z",
+    "repo_sha": "test-case",
+    "runner": "test-runner",
+    "model": "test-model",
+    "token_source": "mixed"
+  },
+  "flow_token_summary": [
+    {
+      "flow_id": "flow-stale-intent-entity",
+      "domain_id": "devx",
+      "route_id": "flow-stale-intent-entity",
+      "selected_target": "domains/_template/domain/USE_CASES.md",
+      "adjudication_used": false,
+      "token_source": "estimated",
+      "total_tokens": 27
+    }
+  ]
+}

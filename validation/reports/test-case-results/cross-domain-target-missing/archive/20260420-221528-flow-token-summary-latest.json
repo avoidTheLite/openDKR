@@ -1,0 +1,21 @@
+{
+  "run": {
+    "run_id": "tc-cross-domain-target-missing",
+    "timestamp": "2026-04-20T00:00:00Z",
+    "repo_sha": "test-case",
+    "runner": "test-runner",
+    "model": "test-model",
+    "token_source": "mixed"
+  },
+  "flow_token_summary": [
+    {
+      "flow_id": "flow-missing-cross-domain-target",
+      "domain_id": "devx",
+      "route_id": "flow-missing-cross-domain-target",
+      "selected_target": "domains/payments/interfaces/OUTBOUND.md",
+      "adjudication_used": false,
+      "token_source": "estimated",
+      "total_tokens": 57
+    }
+  ]
+}
